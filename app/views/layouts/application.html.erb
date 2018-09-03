@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Recipefinder</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<!--<%= yield %>-->
+<h1><%= @search_term %></h1>
+
+<table>
+  <% @rows.each do |row| %>
+    <tr >
+      <td><%= link_to image_tag(row[:thumbnail], size: "100"), row[:recipe_url] %></td>
+      <td><%= link_to(sanitize(row[:title]), row[:recipe_url]) %></td>
+      <td><%= row[:social_rank] %></td>
+    </tr>
+  <% end %>
+</table>
+</body>
+</html>
+<p>Powered By Food2Fork.com</p>
